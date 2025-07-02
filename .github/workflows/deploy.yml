@@ -29,3 +29,11 @@ jobs:
     - name: Deploy
       run: sed -i "s/KV_NAME/{{ secrets.KV_NAME }}/g" wrangler.toml && wrangler deploy --api-token ${{ secrets.CF_API_TOKEN }} --account-id ${{ secrets.CF_ACCOUNT_ID }}
 
+# This is a test change to trigger deployment
+name: Deploy Worker
+on:
+  push:
+    branches:
+      - main
+  release:
+    types: [created]
